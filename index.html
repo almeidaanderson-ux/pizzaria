@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Landing Page Simples</title>
+    <title>SimpleLand - Solução Completa para Seu Negócio</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <style>
-      /* Reset básico e estilos globais */
+      /* Reset e estilos globais */
       * {
         margin: 0;
         padding: 0;
@@ -76,7 +76,19 @@
         box-shadow: 0 6px 20px rgba(52, 199, 89, 0.4);
       }
 
-      /* Header e Navegação */
+      .btn-outline {
+        background: transparent;
+        border: 2px solid #4a6ee0;
+        color: #4a6ee0;
+        box-shadow: none;
+      }
+
+      .btn-outline:hover {
+        background: #4a6ee0;
+        color: white;
+      }
+
+      /* Header */
       header {
         background-color: white;
         box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
@@ -98,6 +110,12 @@
         font-weight: 700;
         color: #4a6ee0;
         text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo i {
+        margin-right: 10px;
       }
 
       .logo span {
@@ -118,10 +136,26 @@
         color: #333;
         font-weight: 500;
         transition: color 0.3s;
+        position: relative;
       }
 
       .nav-links a:hover {
         color: #4a6ee0;
+      }
+
+      .nav-links a:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: #4a6ee0;
+        transition: width 0.3s;
+      }
+
+      .nav-links a:hover:after {
+        width: 100%;
       }
 
       .mobile-menu-btn {
@@ -138,12 +172,32 @@
         background: linear-gradient(135deg, #f5f7ff 0%, #eef1ff 100%);
         padding-top: 140px;
         padding-bottom: 80px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero:before {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          rgba(74, 110, 224, 0.1),
+          rgba(106, 140, 255, 0.05)
+        );
+        top: -250px;
+        right: -150px;
+        z-index: 0;
       }
 
       .hero-content {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        position: relative;
+        z-index: 1;
       }
 
       .hero-text {
@@ -168,13 +222,68 @@
         margin-bottom: 30px;
       }
 
+      .hero-badges {
+        display: flex;
+        align-items: center;
+        margin-top: 30px;
+        flex-wrap: wrap;
+      }
+
+      .badge {
+        background: white;
+        padding: 8px 16px;
+        border-radius: 50px;
+        margin-right: 15px;
+        margin-bottom: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .badge i {
+        color: #34c759;
+        margin-right: 8px;
+      }
+
       .hero-image img {
         max-width: 100%;
         border-radius: 10px;
         box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
       }
 
-      /* Recursos */
+      /* Social Proof */
+      .social-proof {
+        background: white;
+        padding: 40px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .social-proof-content {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        text-align: center;
+      }
+
+      .proof-item {
+        margin: 15px 30px;
+      }
+
+      .proof-item h3 {
+        font-size: 32px;
+        color: #4a6ee0;
+        margin-bottom: 5px;
+      }
+
+      .proof-item p {
+        color: #5a6c7d;
+        font-size: 14px;
+      }
+
+      /* Recursos Avançados */
       .features {
         background-color: white;
       }
@@ -206,12 +315,13 @@
         border-radius: 10px;
         padding: 30px;
         text-align: center;
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
       }
 
       .feature-card:hover {
         transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
       }
 
       .feature-icon {
@@ -236,11 +346,315 @@
         color: #5a6c7d;
       }
 
+      /* Demonstração/Video */
+      .demo {
+        background: linear-gradient(135deg, #f9faff 0%, #f0f4ff 100%);
+      }
+
+      .demo-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .demo-text {
+        flex: 1;
+        padding-right: 40px;
+      }
+
+      .demo-video {
+        flex: 1;
+        text-align: center;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Planos e Preços */
+      .pricing {
+        background: white;
+      }
+
+      .pricing-toggle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 40px;
+      }
+
+      .toggle-label {
+        margin: 0 15px;
+        font-weight: 500;
+      }
+
+      .toggle-switch {
+        position: relative;
+        width: 60px;
+        height: 30px;
+      }
+
+      .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .toggle-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 34px;
+      }
+
+      .toggle-slider:before {
+        position: absolute;
+        content: "";
+        height: 22px;
+        width: 22px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+
+      input:checked + .toggle-slider {
+        background-color: #4a6ee0;
+      }
+
+      input:checked + .toggle-slider:before {
+        transform: translateX(30px);
+      }
+
+      .pricing-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .pricing-card {
+        background: white;
+        border-radius: 10px;
+        padding: 40px 30px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+        border: 2px solid #f0f0f0;
+        position: relative;
+      }
+
+      .pricing-card.featured {
+        border-color: #4a6ee0;
+        transform: scale(1.05);
+      }
+
+      .pricing-card.featured:before {
+        content: "Mais Popular";
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #4a6ee0;
+        color: white;
+        padding: 5px 20px;
+        border-radius: 50px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .pricing-card.featured:hover {
+        transform: scale(1.05) translateY(-10px);
+      }
+
+      .pricing-card h3 {
+        font-size: 24px;
+        color: #2c3e50;
+      }
+
+      .price {
+        font-size: 48px;
+        font-weight: 700;
+        color: #4a6ee0;
+        margin: 20px 0;
+      }
+
+      .price span {
+        font-size: 16px;
+        color: #5a6c7d;
+      }
+
+      .pricing-features {
+        list-style: none;
+        margin: 30px 0;
+        text-align: left;
+      }
+
+      .pricing-features li {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+      }
+
+      .pricing-features li i {
+        color: #34c759;
+        margin-right: 10px;
+      }
+
+      /* Depoimentos */
+      .testimonials {
+        background: linear-gradient(135deg, #f9faff 0%, #f0f4ff 100%);
+      }
+
+      .testimonials-slider {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .testimonial-card {
+        background: white;
+        border-radius: 10px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        margin: 0 20px;
+      }
+
+      .testimonial-text {
+        font-size: 18px;
+        font-style: italic;
+        color: #5a6c7d;
+        margin-bottom: 30px;
+        position: relative;
+      }
+
+      .testimonial-text:before {
+        content: '"';
+        font-size: 80px;
+        color: #4a6ee0;
+        opacity: 0.2;
+        position: absolute;
+        top: -40px;
+        left: -10px;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+      }
+
+      .author-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: #4a6ee0;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: 700;
+        margin-right: 20px;
+      }
+
+      .author-info h4 {
+        font-size: 18px;
+        color: #2c3e50;
+      }
+
+      .author-info p {
+        color: #5a6c7d;
+        font-size: 14px;
+      }
+
+      /* FAQ */
+      .faq {
+        background: white;
+      }
+
+      .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .faq-item {
+        margin-bottom: 20px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .faq-question {
+        background: #f9faff;
+        padding: 20px;
+        font-weight: 600;
+        font-size: 18px;
+        color: #2c3e50;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.3s;
+      }
+
+      .faq-question:hover {
+        background: #f0f4ff;
+      }
+
+      .faq-answer {
+        padding: 0 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+      }
+
+      .faq-answer.open {
+        padding: 20px;
+        max-height: 500px;
+      }
+
       /* CTA Section */
       .cta {
         background: linear-gradient(135deg, #4a6ee0, #6a8cff);
         color: white;
         text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta:before {
+        content: "";
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        top: -200px;
+        right: -100px;
+      }
+
+      .cta:after {
+        content: "";
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        bottom: -150px;
+        left: -100px;
+      }
+
+      .cta-content {
+        position: relative;
+        z-index: 1;
       }
 
       .cta h2 {
@@ -253,6 +667,41 @@
         margin: 0 auto 30px;
         font-size: 18px;
         opacity: 0.9;
+      }
+
+      /* Formulário de Contato */
+      .contact-form {
+        background: white;
+        max-width: 600px;
+        margin: 40px auto 0;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #2c3e50;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border 0.3s;
+      }
+
+      .form-control:focus {
+        border-color: #4a6ee0;
+        outline: none;
       }
 
       /* Footer */
@@ -324,6 +773,38 @@
         transform: translateY(-3px);
       }
 
+      .newsletter-form {
+        display: flex;
+        margin-top: 20px;
+      }
+
+      .newsletter-input {
+        flex: 1;
+        padding: 12px 15px;
+        border: none;
+        border-radius: 50px 0 0 50px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+      }
+
+      .newsletter-input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .newsletter-btn {
+        background: #6a8cff;
+        color: white;
+        border: none;
+        padding: 0 20px;
+        border-radius: 0 50px 50px 0;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .newsletter-btn:hover {
+        background: #4a6ee0;
+      }
+
       .copyright {
         text-align: center;
         padding-top: 30px;
@@ -334,12 +815,14 @@
 
       /* Responsividade */
       @media (max-width: 992px) {
-        .hero-content {
+        .hero-content,
+        .demo-content {
           flex-direction: column;
           text-align: center;
         }
 
-        .hero-text {
+        .hero-text,
+        .demo-text {
           padding-right: 0;
           margin-bottom: 50px;
         }
@@ -347,11 +830,35 @@
         .hero h1 {
           font-size: 40px;
         }
+
+        .pricing-card.featured {
+          transform: none;
+        }
+
+        .pricing-card.featured:hover {
+          transform: translateY(-10px);
+        }
       }
 
       @media (max-width: 768px) {
         .nav-links {
           display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background: white;
+          flex-direction: column;
+          padding: 20px;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .nav-links li {
+          margin: 10px 0;
         }
 
         .mobile-menu-btn {
@@ -382,21 +889,32 @@
 
         .btn {
           padding: 12px 25px;
+          margin-bottom: 10px;
+          display: block;
+          width: 100%;
+        }
+
+        .contact-form {
+          padding: 20px;
         }
       }
     </style>
   </head>
   <body>
-    <!-- Header e Navegação -->
+    <!-- Header -->
     <header>
       <div class="container">
         <nav>
-          <a href="#" class="logo">Simple<span>Land</span></a>
+          <a href="#" class="logo"
+            ><i class="fas fa-rocket"></i>Simple<span>Land</span></a
+          >
 
           <ul class="nav-links">
             <li><a href="#home">Início</a></li>
             <li><a href="#features">Recursos</a></li>
-            <li><a href="#cta">Experimente</a></li>
+            <li><a href="#demo">Demonstração</a></li>
+            <li><a href="#pricing">Planos</a></li>
+            <li><a href="#testimonials">Depoimentos</a></li>
             <li><a href="#contact">Contato</a></li>
           </ul>
 
@@ -412,22 +930,32 @@
       <div class="container">
         <div class="hero-content">
           <div class="hero-text">
-            <h1>Sua Solução Simples e Eficiente</h1>
+            <h1>Sua Solução Completa para Crescimento Digital</h1>
             <p>
-              Transforme sua maneira de trabalhar com nossa plataforma intuitiva
-              e poderosa. Fácil de usar, projetada para ajudá-lo a alcançar seus
-              objetivos mais rapidamente.
+              Uma plataforma tudo-em-um projetada para impulsionar seu negócio
+              com ferramentas avançadas, automação inteligente e insights
+              valiosos.
             </p>
-            <a href="#cta" class="btn">Começar Agora</a>
-            <a
-              href="#features"
-              class="btn btn-secondary"
-              style="margin-left: 15px"
-              >Saiba Mais</a
-            >
+            <div class="hero-badges">
+              <div class="badge">
+                <i class="fas fa-check-circle"></i> Sem necessidade de cartão de
+                crédito
+              </div>
+              <div class="badge">
+                <i class="fas fa-check-circle"></i> Teste gratuito de 30 dias
+              </div>
+              <div class="badge">
+                <i class="fas fa-check-circle"></i> Suporte 24/7
+              </div>
+            </div>
+            <div style="margin-top: 30px">
+              <a href="#cta" class="btn">Experimente Gratuitamente</a>
+              <a href="#demo" class="btn btn-outline" style="margin-left: 15px"
+                >Ver Demonstração</a
+              >
+            </div>
           </div>
           <div class="hero-image">
-            <!-- Imagem ilustrativa -->
             <div
               style="
                 background: linear-gradient(135deg, #4a6ee0, #6a8cff);
@@ -442,8 +970,32 @@
                 box-shadow: 0 15px 30px rgba(74, 110, 224, 0.3);
               "
             >
-              <i class="fas fa-rocket"></i>
+              <i class="fas fa-chart-line"></i>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+      <div class="container">
+        <div class="social-proof-content">
+          <div class="proof-item">
+            <h3>10K+</h3>
+            <p>Clientes Satisfeitos</p>
+          </div>
+          <div class="proof-item">
+            <h3>99.9%</h3>
+            <p>Taxa de Disponibilidade</p>
+          </div>
+          <div class="proof-item">
+            <h3>24/7</h3>
+            <p>Suporte Especializado</p>
+          </div>
+          <div class="proof-item">
+            <h3>4.9/5</h3>
+            <p>Avaliação dos Usuários</p>
           </div>
         </div>
       </div>
@@ -453,22 +1005,33 @@
     <section id="features" class="features">
       <div class="container">
         <div class="section-title">
-          <h2>Recursos Incríveis</h2>
+          <h2>Recursos Avançados</h2>
           <p>
             Descubra tudo que nossa plataforma oferece para otimizar seu
-            trabalho e aumentar sua produtividade.
+            trabalho e aumentar sua produtividade em até 300%.
           </p>
         </div>
 
         <div class="features-grid">
           <div class="feature-card">
             <div class="feature-icon">
-              <i class="fas fa-bolt"></i>
+              <i class="fas fa-robot"></i>
             </div>
-            <h3>Rápido e Leve</h3>
+            <h3>Automação Inteligente</h3>
             <p>
-              Carregamento instantâneo e interface otimizada para máxima
-              performance, mesmo em dispositivos mais antigos.
+              Automatize tarefas repetitivas com nossa IA avançada que aprende
+              com seus padrões de trabalho.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-chart-pie"></i>
+            </div>
+            <h3>Análises em Tempo Real</h3>
+            <p>
+              Dashboard personalizável com métricas em tempo real e relatórios
+              detalhados para tomada de decisão.
             </p>
           </div>
 
@@ -476,88 +1039,401 @@
             <div class="feature-icon">
               <i class="fas fa-shield-alt"></i>
             </div>
-            <h3>Seguro e Confiável</h3>
+            <h3>Segurança Enterprise</h3>
             <p>
-              Seus dados estão protegidos com criptografia de ponta a ponta e
-              backups automáticos diários.
+              Criptografia de ponta a ponta, autenticação de dois fatores e
+              conformidade com LGPD/GDPR.
             </p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon">
-              <i class="fas fa-sync-alt"></i>
+              <i class="fas fa-plug"></i>
             </div>
-            <h3>Sincronização em Tempo Real</h3>
+            <h3>Integrações Ilimitadas</h3>
             <p>
-              Trabalhe em qualquer dispositivo e tenha todas as suas alterações
-              sincronizadas automaticamente.
+              Conecte-se com mais de 500 aplicativos populares através de nossa
+              API aberta e conectores nativos.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3>Aplicativo Móvel</h3>
+            <p>
+              Acesse todas as funcionalidades através de nossos aplicativos
+              nativos para iOS e Android.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-users-cog"></i>
+            </div>
+            <h3>Colaboração em Equipe</h3>
+            <p>
+              Ferramentas de colaboração em tempo real, compartilhamento seguro
+              e controle de permissões granulares.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- Demonstração -->
+    <section id="demo" class="demo">
+      <div class="container">
+        <div class="demo-content">
+          <div class="demo-text">
+            <h2>Veja Nossa Plataforma em Ação</h2>
+            <p>
+              Assista a uma demonstração rápida de como nossa plataforma pode
+              transformar a maneira como você trabalha. Em menos de 5 minutos,
+              você verá os principais recursos e como eles se aplicam ao seu
+              negócio.
+            </p>
+            <ul style="margin: 20px 0 30px; padding-left: 20px">
+              <li style="margin-bottom: 10px">
+                Interface intuitiva e fácil de usar
+              </li>
+              <li style="margin-bottom: 10px">
+                Configuração rápida em menos de 10 minutos
+              </li>
+              <li style="margin-bottom: 10px">
+                Personalização completa do fluxo de trabalho
+              </li>
+            </ul>
+            <a href="#cta" class="btn">Começar Agora</a>
+          </div>
+          <div class="demo-video">
+            <div
+              style="
+                background: linear-gradient(135deg, #2c3e50, #4a6ee0);
+                width: 100%;
+                height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 80px;
+                cursor: pointer;
+              "
+              onclick="playDemo()"
+            >
+              <i class="fas fa-play-circle"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Planos e Preços -->
+    <section id="pricing" class="pricing">
+      <div class="container">
+        <div class="section-title">
+          <h2>Planos que Crescem com Você</h2>
+          <p>
+            Escolha o plano perfeito para suas necessidades. Todos incluem nosso
+            período de teste gratuito de 30 dias.
+          </p>
+        </div>
+
+        <div class="pricing-toggle">
+          <span class="toggle-label">Cobrança Mensal</span>
+          <label class="toggle-switch">
+            <input
+              type="checkbox"
+              id="pricingToggle"
+              onchange="togglePricing()"
+            />
+            <span class="toggle-slider"></span>
+          </label>
+          <span class="toggle-label"
+            >Cobrança Anual
+            <span style="color: #34c759; font-size: 14px"
+              >(Economize 20%)</span
+            ></span
+          >
+        </div>
+
+        <div class="pricing-cards">
+          <div class="pricing-card">
+            <h3>Básico</h3>
+            <div class="price" id="basicPrice">R$ 49<span>/mês</span></div>
+            <p>Perfeito para pequenas equipes e projetos iniciais</p>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check"></i> Até 5 usuários</li>
+              <li><i class="fas fa-check"></i> 10GB de armazenamento</li>
+              <li><i class="fas fa-check"></i> Suporte por email</li>
+              <li>
+                <i class="fas fa-check"></i> Recursos básicos de automação
+              </li>
+              <li>
+                <i class="fas fa-times" style="color: #ff6b6b"></i> Análises
+                avançadas
+              </li>
+            </ul>
+            <a href="#cta" class="btn btn-outline" style="width: 100%"
+              >Escolher Plano</a
+            >
+          </div>
+
+          <div class="pricing-card featured">
+            <h3>Profissional</h3>
+            <div class="price" id="proPrice">R$ 99<span>/mês</span></div>
+            <p>Ideal para empresas em crescimento</p>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check"></i> Até 20 usuários</li>
+              <li><i class="fas fa-check"></i> 100GB de armazenamento</li>
+              <li><i class="fas fa-check"></i> Suporte prioritário</li>
+              <li><i class="fas fa-check"></i> Automação completa</li>
+              <li><i class="fas fa-check"></i> Análises avançadas</li>
+            </ul>
+            <a href="#cta" class="btn" style="width: 100%">Escolher Plano</a>
+          </div>
+
+          <div class="pricing-card">
+            <h3>Enterprise</h3>
+            <div class="price" id="enterprisePrice">
+              R$ 199<span>/mês</span>
+            </div>
+            <p>Para grandes organizações com necessidades específicas</p>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check"></i> Usuários ilimitados</li>
+              <li><i class="fas fa-check"></i> Armazenamento ilimitado</li>
+              <li><i class="fas fa-check"></i> Suporte 24/7 dedicado</li>
+              <li><i class="fas fa-check"></i> Automação com IA</li>
+              <li><i class="fas fa-check"></i> Análises preditivas</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline" style="width: 100%"
+              >Fale Conosco</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <div class="section-title">
+          <h2>O que Nossos Clientes Dizem</h2>
+          <p>
+            Veja como empresas de todos os tamanhos estão usando nossa
+            plataforma para transformar seus negócios.
+          </p>
+        </div>
+
+        <div class="testimonials-slider">
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              "A SimpleLand revolucionou nossa produtividade. Em apenas 3 meses,
+              conseguimos automatizar 70% das tarefas manuais da equipe,
+              liberando tempo para focar no que realmente importa."
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar">MC</div>
+              <div class="author-info">
+                <h4>Maria Clara Santos</h4>
+                <p>CEO, TechSolutions Brasil</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+      <div class="container">
+        <div class="section-title">
+          <h2>Perguntas Frequentes</h2>
+          <p>
+            Encontre respostas para as dúvidas mais comuns sobre nossa
+            plataforma.
+          </p>
+        </div>
+
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(0)">
+              Como funciona o período de teste gratuito?
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer" id="faq0">
+              <p>
+                Oferecemos 30 dias de teste gratuito com acesso a todos os
+                recursos do plano Profissional. Não é necessário cartão de
+                crédito para iniciar. No final do período, você pode escolher um
+                dos nossos planos ou cancelar sem custo algum.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(1)">
+              Posso migrar meus dados de outras plataformas?
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer" id="faq1">
+              <p>
+                Sim! Oferecemos ferramentas de migração e suporte especializado
+                para ajudar você a importar dados de mais de 50 plataformas
+                diferentes. Nossa equipe pode ajudar no processo para garantir
+                uma transição suave e sem perda de dados.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(2)">
+              A plataforma é compatível com dispositivos móveis?
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer" id="faq2">
+              <p>
+                Completamente! Nossa plataforma é 100% responsiva e funciona
+                perfeitamente em smartphones e tablets. Além disso, oferecemos
+                aplicativos nativos para iOS e Android com todas as
+                funcionalidades da versão web.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Final -->
     <section id="cta" class="cta">
       <div class="container">
-        <h2>Pronto para Começar?</h2>
-        <p>
-          Junte-se a milhares de usuários que já estão aproveitando os
-          benefícios da nossa plataforma. Experimente gratuitamente por 30 dias.
-        </p>
-        <a href="#" class="btn btn-secondary">Experimente Grátis</a>
+        <div class="cta-content">
+          <h2>Pronto para Transformar Seu Negócio?</h2>
+          <p>
+            Junte-se a mais de 10.000 empresas que já estão aproveitando os
+            benefícios da SimpleLand. Comece gratuitamente hoje mesmo.
+          </p>
+          <a href="#" class="btn btn-secondary" style="margin-right: 15px"
+            >Experimente Grátis por 30 Dias</a
+          >
+          <a href="#contact" class="btn btn-outline">Falar com Vendas</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulário de Contato -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Entre em Contato</h2>
+          <p>
+            Tem alguma dúvida específica? Nossa equipe está pronta para ajudar
+            você.
+          </p>
+        </div>
+
+        <div class="contact-form">
+          <form id="contactForm" onsubmit="submitForm(event)">
+            <div class="form-group">
+              <label for="name">Nome Completo</label>
+              <input type="text" id="name" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+              <label for="company">Empresa</label>
+              <input type="text" id="company" class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Mensagem</label>
+              <textarea
+                id="message"
+                class="form-control"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn" style="width: 100%">
+              Enviar Mensagem
+            </button>
+          </form>
+        </div>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
       <div class="container">
         <div class="footer-content">
           <div class="footer-column">
-            <h3>SimpleLand</h3>
+            <h3><i class="fas fa-rocket"></i> SimpleLand</h3>
             <p>
               Soluções simples para problemas complexos. Nossa missão é tornar a
-              tecnologia acessível e útil para todos.
+              tecnologia acessível e útil para todos os negócios.
             </p>
             <div class="social-icons">
               <a href="#"><i class="fab fa-facebook-f"></i></a>
               <a href="#"><i class="fab fa-twitter"></i></a>
               <a href="#"><i class="fab fa-instagram"></i></a>
               <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
           </div>
 
           <div class="footer-column">
-            <h3>Links Rápidos</h3>
+            <h3>Produto</h3>
             <ul>
-              <li><a href="#home">Início</a></li>
               <li><a href="#features">Recursos</a></li>
-              <li><a href="#cta">Experimente Grátis</a></li>
-              <li><a href="#">Preços</a></li>
+              <li><a href="#pricing">Planos e Preços</a></li>
+              <li><a href="#demo">Demonstração</a></li>
+              <li><a href="#">API e Documentação</a></li>
+              <li><a href="#">Status do Sistema</a></li>
             </ul>
           </div>
 
           <div class="footer-column">
-            <h3>Contato</h3>
+            <h3>Empresa</h3>
             <ul>
-              <li>
-                <i class="fas fa-envelope" style="margin-right: 10px"></i>
-                contato@simpleland.com
-              </li>
-              <li>
-                <i class="fas fa-phone" style="margin-right: 10px"></i> (11)
-                99999-9999
-              </li>
-              <li>
-                <i class="fas fa-map-marker-alt" style="margin-right: 10px"></i>
-                São Paulo, SP
-              </li>
+              <li><a href="#">Sobre Nós</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Carreiras</a></li>
+              <li><a href="#">Parcerias</a></li>
+              <li><a href="#">Imprensa</a></li>
             </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Newsletter</h3>
+            <p>
+              Receba as últimas novidades e dicas exclusivas diretamente no seu
+              e-mail.
+            </p>
+            <form class="newsletter-form">
+              <input
+                type="email"
+                class="newsletter-input"
+                placeholder="Seu e-mail"
+              />
+              <button type="submit" class="newsletter-btn">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
           </div>
         </div>
 
         <div class="copyright">
-          <p>&copy; 2023 SimpleLand. Todos os direitos reservados.</p>
+          <p>
+            &copy; 2023 SimpleLand. Todos os direitos reservados. |
+            <a href="#" style="color: #6a8cff">Política de Privacidade</a> |
+            <a href="#" style="color: #6a8cff">Termos de Uso</a>
+          </p>
         </div>
       </div>
     </footer>
@@ -568,24 +1444,91 @@
       const navLinks = document.querySelector(".nav-links");
 
       mobileMenuBtn.addEventListener("click", () => {
-        navLinks.style.display =
-          navLinks.style.display === "flex" ? "none" : "flex";
+        navLinks.classList.toggle("active");
       });
+
+      // Fechar menu ao clicar em um link (mobile)
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (window.innerWidth <= 768) {
+            navLinks.classList.remove("active");
+          }
+        });
+      });
+
+      // Alternar preços (mensal/anual)
+      function togglePricing() {
+        const toggle = document.getElementById("pricingToggle");
+        const basicPrice = document.getElementById("basicPrice");
+        const proPrice = document.getElementById("proPrice");
+        const enterprisePrice = document.getElementById("enterprisePrice");
+
+        if (toggle.checked) {
+          // Preços anuais (com desconto de 20%)
+          basicPrice.innerHTML = "R$ 39<span>/mês</span>";
+          proPrice.innerHTML = "R$ 79<span>/mês</span>";
+          enterprisePrice.innerHTML = "R$ 159<span>/mês</span>";
+        } else {
+          // Preços mensais
+          basicPrice.innerHTML = "R$ 49<span>/mês</span>";
+          proPrice.innerHTML = "R$ 99<span>/mês</span>";
+          enterprisePrice.innerHTML = "R$ 199<span>/mês</span>";
+        }
+      }
+
+      // Sistema de FAQ
+      function toggleFAQ(index) {
+        const answer = document.getElementById(`faq${index}`);
+        const icon = answer.previousElementSibling.querySelector("i");
+
+        answer.classList.toggle("open");
+
+        if (answer.classList.contains("open")) {
+          icon.classList.remove("fa-chevron-down");
+          icon.classList.add("fa-chevron-up");
+        } else {
+          icon.classList.remove("fa-chevron-up");
+          icon.classList.add("fa-chevron-down");
+        }
+      }
+
+      // Simular envio de formulário
+      function submitForm(event) {
+        event.preventDefault();
+        alert("Obrigado pelo seu interesse! Entraremos em contato em breve.");
+        document.getElementById("contactForm").reset();
+      }
+
+      // Simular reprodução de vídeo
+      function playDemo() {
+        alert("Reproduzindo demonstração da plataforma...");
+      }
 
       // Ajustar menu em redimensionamento
       window.addEventListener("resize", () => {
         if (window.innerWidth > 768) {
-          navLinks.style.display = "flex";
-        } else {
-          navLinks.style.display = "none";
+          navLinks.classList.remove("active");
         }
       });
 
-      // Fechar menu ao clicar em um link (em dispositivos móveis)
-      document.querySelectorAll(".nav-links a").forEach((link) => {
-        link.addEventListener("click", () => {
-          if (window.innerWidth <= 768) {
-            navLinks.style.display = "none";
+      // Adicionar classe ativa ao menu conforme rolagem
+      window.addEventListener("scroll", () => {
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".nav-links a");
+
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (scrollY >= sectionTop - 200) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href").substring(1) === current) {
+            link.classList.add("active");
           }
         });
       });
